@@ -40,44 +40,22 @@ public class Main{
         System.out.println("静态区");
     }
     public static void main (String [] args) {
-/*        try{
-            Map<String,String> map = new HashMap<String, String>();
-            JSONObject baiduCode = NetReqUtil.get("http://api.map.baidu.com/geoconv/v1/?ak="+AK+"&coords="+109.102+","+39.12).getJSONArray("result").getJSONObject(0);
-            Double blog = baiduCode.getDouble("x");
-            Double blat = baiduCode.getDouble("y");
-            JSONObject addressInfo = NetReqUtil.get("http://api.map.baidu.com/geocoder/v2/?output=json&pois=1&ak="+AK+"&location="+blat+","+blog).getJSONObject("result");
-            map.put("fullAddr",addressInfo.getString("formatted_address"));
-            JSONObject addressDetail = addressInfo.getJSONObject("addressComponent");
-            map.put("province",addressDetail.getString("province"));
-            map.put("city",addressDetail.getString("city"));
-            System.out.println(addressInfo.getString("formatted_address"));
-        }catch (Exception e){
-            e.printStackTrace();
-        }*/
-        /*Map<String,String> params = new HashMap<String, String>();
-        params.put("appid","wxd930ea5d5a258f4f");
-        params.put("mch_id","10000100");
-        params.put("device_info","1000");
-        params.put("body","test");
-        params.put("nonce_str","ibuaiVcKdpRxkhJA");
-        System.out.println(PayWxUtil.getSign(params,"192006250b4c09247ec02edce69f6a2d"));
-
-        for(int i=0;i<10;i++){
-            System.out.println(PayWxUtil.getNonceStr());
-        }
-
-        System.out.println(PayWxUtil.getMchBillno("0123456789-"));*/
-        /*Properties properties = PropsUtil.loadProps("setting/token.properties");
-        try {
-            System.out.println(PropsUtil.getProperty("access_token",properties));
-            PropsUtil.setProperty("access_token", "test3", "setting/token.properties");
-            properties = PropsUtil.loadProps("setting/token.properties");
-            System.out.println(PropsUtil.getProperty("access_token",properties));
-        }catch (Exception e){
-            e.printStackTrace();
-        }*/
-        //System.out.println(CodeUtil.generate(1+"")+CodeUtil.validate(CodeUtil.generate(1+"")));
+        String path = System.getProperty("user.dir");
         new Main();
+        Map<String,String> map = new HashMap<String, String>();
+        StringBuffer sb = new StringBuffer("one");
+        String str = "one";
+        map.put("origin","one");
+        test(map,sb,str);
+        System.out.println(sb);
+        for (Map.Entry<String,String> entry:map.entrySet()){
+            System.out.println(entry.getKey()+" "+entry.getValue());
+        }
+    }
+    private static void test(Map<String,String > map,StringBuffer sb,String str){
+        str = "two";
+        map.put("extra","test");
+        sb.append("extra");
     }
 
 }
