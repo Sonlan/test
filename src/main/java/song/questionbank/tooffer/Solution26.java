@@ -4,6 +4,9 @@ package song.questionbank.tooffer;
  * Created by Song on 2017/3/24.
  * 输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。要求不能创建任何新的结点，只能调整树中结点指针的指向。
  */
+
+import java.util.HashSet;
+
 /**
  public class TreeNode {
  int val = 0;
@@ -19,6 +22,7 @@ package song.questionbank.tooffer;
  */
 public class Solution26 {
     public TreeNode Convert(TreeNode pRootOfTree) {
+        ThreadLocal tl = new ThreadLocal();
         if(null == pRootOfTree) return null;
         if(null == pRootOfTree.left && null == pRootOfTree.right) return pRootOfTree;
         TreeNode left = Convert(pRootOfTree.left);
