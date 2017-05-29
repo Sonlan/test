@@ -8,23 +8,24 @@ import java.util.Scanner;
  * .同时被转发的文章也能再次被转发分享(转发后的文章第二天能被20个再次转发分享,第三天能被10个人转发分享),问N天后,这篇文章被转发了多少次？
  */
 public class Main {
-    private int totalNum = 0;
-    private int limitDay = 0;
-    private int initDay = 1;
+    private static int limitDay = 0;
 
-    private void count(int day,int num,int initDay){
-        if(4 <= day || initDay>=limitDay) return ;
+    public static int count(int day,int initDay){
+        if(4 <= day || initDay>limitDay) return 0;
         if(2 == day) {
-            this.totalNum+=20*num;
-            count(day++,20,initDay++);
+            return 20+20*count(day+1,initDay+1)+20*count(2,initDay+1);
         }
         if(3 == day) {
-            this.totalNum+=10*num;
-            count(day++,10,initDay++);
+            return 10+10*count(2,initDay+1);
         }
+        return 0;
     }
     public static void main(String [] args){
         Scanner scanner = new Scanner(System.in);
+        int limitN = scanner.nextInt();
+        limitDay = limitN;
+        int totalNum = count(2,2);
+        System.out.println(totalNum);
 
     }
 }
