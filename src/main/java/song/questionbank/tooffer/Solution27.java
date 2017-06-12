@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class Solution27 {
     public static ArrayList<String> Permutation(String str) {
         ArrayList<String> list = new ArrayList<String>();
+        if(str.length() == 0 ) return list;
         perm(str.toCharArray(),0,list);
         for(int i=0;i<list.size();i++){
             if(list.indexOf(list.get(i))!=i) {
