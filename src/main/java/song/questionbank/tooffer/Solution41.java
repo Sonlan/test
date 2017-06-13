@@ -19,15 +19,34 @@ public class Solution41 {
         int mid = sum/2+1;
         while (start<mid && end<sum){
             if(tempSum == sum){
-                
+                ArrayList<Integer> list = new ArrayList<Integer>();
+                add(list,start,end);
+                result.add(list);
+                start++;
+                tempSum-=start-1;
             }else if(tempSum>sum){
-
+                start++;
+                tempSum-=start-1;
             }else {
-
+                end++;
+                tempSum+=end;
             }
 
         }
 
         return result;
+    }
+
+    private void add(ArrayList<Integer> list,int start,int end){
+        int i=start;
+        while (i<=end){
+            list.add(i);
+            i++;
+        }
+    }
+
+    public static void main(String [] args){
+        ArrayList<ArrayList<Integer>> result = new Solution41().FindContinuousSequence(100);
+        System.out.println(result);
     }
 }
