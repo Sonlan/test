@@ -7,6 +7,19 @@ package song.questionbank.tooffer;
  */
 public class Solution57 {
     public TreeLinkNode GetNext(TreeLinkNode pNode) {
+        if(null == pNode) return null;
+        if(null != pNode.right) {
+            TreeLinkNode p = pNode.right;
+            while (null != p.left) {
+                p = p.left;
+            }
+            return p;
+        }
+        //可能再左子树或右子树
+        while (null != pNode.next){
+            if(pNode == pNode.next.left)  return pNode.next;
+            pNode = pNode.next;
+        }
         return null;
     }
 }
