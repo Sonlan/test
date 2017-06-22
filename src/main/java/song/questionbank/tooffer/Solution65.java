@@ -10,6 +10,76 @@ package song.questionbank.tooffer;
  */
 public class Solution65 {
     public boolean hasPath(char[] matrix, int rows, int cols, char[] str) {
+        char [][] m = new char[rows][cols];
+        boolean [][] flag = new boolean[rows][cols];
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+                m[i][j] = matrix[i*cols+j];
+                flag[i][j] = false;
+            }
+        }
+        for(int i=0;i<m.length;i++){
+            for(int j=0;j<m[0].length;j++){
+                System.out.println("**************************");
+                if(findPath(m,i,j,0,str,flag))
+                    return true;
+            }
+        }
+        return false;
+    }
 
+    public boolean findPath(char [][] m,int row,int col,int len,char [] str,boolean [][] flag){
+        if(len>= str.length) return true;
+        if(col>=m[0].length || row>=m.length || col<0 || row<0 ) return false;
+
+        if(flag[row][col] == true) return false;
+
+        if(m[row][col] != str[len]) return false;
+
+        flag[row][col] = true;
+        System.out.println(m[row][col]);
+        if(findPath(m,row,col+1,len+1,str,flag)||
+                findPath(m, row, col-1, len+1, str,flag)||
+                findPath(m, row+1, col, len+1, str,flag)||
+                findPath(m, row-1, col, len+1, str,flag))
+            return true;
+        flag[row][col] = false;
+        return false;
+    }
+/*
+    public boolean hasPath(char[] matrix, int rows, int cols, char[] str) {
+        int flag[] = new int[matrix.length];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (helper(matrix, rows, cols, i, j, str, 0, flag))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean helper(char[] matrix, int rows, int cols, int i, int j, char[] str, int k, int[] flag) {
+        int index = i * cols + j;
+        if (i < 0 || i >= rows || j < 0 || j >= cols || matrix[index] != str[k] || flag[index] == 1)
+            return false;
+        if(k == str.length - 1) return true;
+        flag[index] = 1;
+        if (helper(matrix, rows, cols, i - 1, j, str, k + 1, flag)
+                || helper(matrix, rows, cols, i + 1, j, str, k + 1, flag)
+                || helper(matrix, rows, cols, i, j - 1, str, k + 1, flag)
+                || helper(matrix, rows, cols, i, j + 1, str, k + 1, flag)) {
+            return true;
+        }
+        flag[index] = 0;
+        return false;
+    }
+*/
+
+
+    public static void main(String [] args){
+        Solution65 sol = new Solution65();
+        /*System.out.println(sol.hasPath(new char[]{'a','a','a','a','a','a','a','a','a','a','a','a'},3,4,new char[]{'a','a','a','a','a','a','a','a','a','a','a','a'}));
+        System.out.println(sol.hasPath(new char[]{'a','b','c','d','e','f','g','h','i','j','k','l'},4,3,new char[]{'a','b','a'}));
+        */System.out.println(sol.hasPath("ABCEHJIGSFCSLOPQADEEMNOEADIDEJFMVCEIFGGS".toCharArray(),5,8,"SGGFIECVAASABCEHJIGQEM".toCharArray()));
     }
 }

@@ -34,7 +34,7 @@ public class Solution64 {
     }
 
     public static void main(String [] args){
-        int [] source = new int [] {2,3,4,2,6,2,5,1};
+        int [] source = new int [] {1,2,3,2,4,6,3,2,1,10};
         Solution64 sol = new Solution64();
         System.out.println(sol.maxInWindows(source,3));
     }
