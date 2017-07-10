@@ -25,10 +25,13 @@ package song.questionbank.leetcode_niuke;
  */
 public class Solution22 {
     public int sumNumbers(TreeNode root) {
-        return 0;
+        return sumNumbersCore(root,0);
     }
 
-    public int sumNumbersCore(TreeNode root,String nums){
-        return 0;
+    public int sumNumbersCore(TreeNode root,int sum){
+        if(null == root) return 0;
+        sum = sum*10+root.val;
+        if(null == root.left && null == root.right) return sum;
+        return sumNumbersCore(root.left,sum)+sumNumbersCore(root.right, sum);
     }
 }
