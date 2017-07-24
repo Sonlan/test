@@ -7,6 +7,7 @@ package song.questionbank.leetcode_niuke;
  Note:
  You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
  */
+//http://blog.csdn.net/cristianojason/article/details/52494603
 public class Solution28_ {
     public int maxProfit(int[] prices) {
         int hold1 = Integer.MIN_VALUE, hold2 = Integer.MIN_VALUE;
