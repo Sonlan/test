@@ -17,6 +17,7 @@ package song.questionbank.leetcode_niuke;
  *              S[i-1]==T[j-1]： DP[i][j] = DP[i-1][j-1]（选择S中的s[i-1]字符） + DP[i][j-1]
  *  初始状态：第0列：DP[i][0] = 0，第0行：DP[0][j] = 1
  */
+//可以看看，动态规划
 public class Solution36 {
     public int numDistinct(String S, String T) {
         int row = S.length() + 1;
