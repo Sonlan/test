@@ -6,17 +6,14 @@ package song.innersort;
 public class InsertSort extends Sort{
 
     public void sort(int [] a){
+        if(null == a || 1>=a.length) return;
+        int curPos,j;
         for(int i=1;i<a.length;i++){
-            int temp = a[i];
-            int j = i;
-            for(j=i;j>0;j--){
-                if(temp<a[j-1]){
-                    a[j] = a[j-1];
-                }else {
-                    break;
-                }
+            curPos = a[i];
+            for(j = i;j>0 && curPos < a[j-1];j--){
+                a[j] = a[j-1];
             }
-            a[j] = temp;
+            a[j] = curPos;
         }
     }
 
