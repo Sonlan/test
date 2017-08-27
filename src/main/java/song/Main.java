@@ -1,6 +1,8 @@
 package song;
 
+import java.util.Hashtable;
 import java.util.Scanner;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by Song on 2017/5/25.
@@ -21,11 +23,15 @@ public class Main {
         return 0;
     }
     public static void main(String [] args){
-        Scanner scanner = new Scanner(System.in);
+/*        Scanner scanner = new Scanner(System.in);
         int limitN = scanner.nextInt();
         limitDay = limitN;
         int totalNum = count(2,2);
-        System.out.println(totalNum);
-
+        System.out.println(totalNum);*/
+        Hashtable hashtable = new Hashtable();
+        hashtable.put(null,"");
+        hashtable.put("asd",null);
+        ConcurrentHashMap concurrentHashMap;
+        System.out.println();
     }
 }
